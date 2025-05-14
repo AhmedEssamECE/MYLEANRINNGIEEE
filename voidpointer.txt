@@ -33,3 +33,40 @@ int main() {
 }Always cast the void pointer to the correct type before dereferencing
 
 Be careful with type sizes - a void pointer doesn't know the size of the data it points to
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct {
+
+  
+    int id ;
+       char name [64];
+
+}Person;
+int do_a_thing (Person *pPerson)
+{
+    
+    pPerson->id=0
+    memset(&pPerson->name , '0' ,64);
+    return 0;
+}
+int main (int argc ,char *argv[])
+{
+    Person *pPerson12= (Person*)malloc(sizeof(Person)); //void star return (malloc)
+    if(NULL==pPerson12)
+    {
+        puts("the heap failed "); //  puts("Hello World!");  // Automatically adds \n at the end
+    
+    }
+    free(pPerson12);
+    /*Person p= {0};
+    int ret =do_a_thing(&p);
+    
+    int a= 4;
+    int *pA= &a;
+    void *vA=&a;
+    */
+}
