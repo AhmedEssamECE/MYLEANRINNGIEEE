@@ -1,0 +1,35 @@
+A void pointer in C is a special type of pointer that can point to objects of any data type. It's declared using the void* syntax. Void pointers are particularly useful when you need to create generic functions or handle different data types through a single pointer.
+
+Key Characteristics of Void Pointers:
+Can store address of any type
+
+Cannot be dereferenced directly (must be cast to appropriate type first)
+
+Cannot perform pointer arithmetic (compiler doesn't know the size of what it points to)
+Example: Using Void Pointer
+#include <stdio.h>
+
+int main() {
+    int num = 10;
+    float f = 2.5;
+    char ch = 'A';
+    
+    // Void pointer declaration
+    void *vp;
+    
+    // Assign address of integer to void pointer
+    vp = &num;
+    printf("Integer value: %d\n", *(int*)vp); // Need to cast before dereferencing
+    
+    // Assign address of float to void pointer
+    vp = &f;
+    printf("Float value: %.2f\n", *(float*)vp);
+    
+    // Assign address of char to void pointer
+    vp = &ch;
+    printf("Character value: %c\n", *(char*)vp);
+    
+    return 0;
+}Always cast the void pointer to the correct type before dereferencing
+
+Be careful with type sizes - a void pointer doesn't know the size of the data it points to
