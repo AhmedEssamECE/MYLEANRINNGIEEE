@@ -1,0 +1,56 @@
+int x = 10;
+int *ptr = &x; // ptr holds the address of x
+printf("%d", *ptr); // Output: 10 (dereferencing)
+Dynamic memory allocation (malloc, calloc, realloc, free).
+
+Passing variables by reference (modifying original values in functions).
+
+Efficient array and string manipulation.
+
+Implementing data structures (linked lists, trees, etc.).
+2. Stack vs Heap Memory
+✔ Stack Memory
+Managed automatically by the compiler.
+
+Fast allocation/deallocation (LIFO: Last-In-First-Out).
+
+Stores local variables, function calls, and return addresses.
+
+Fixed size (can cause stack overflow if exceeded).
+
+Memory is freed when function exits.
+✔ Heap Memory
+Manually managed (allocated with malloc/calloc, freed with free).
+
+Slower than stack but flexible in size.
+
+Used for dynamic memory allocation (e.g., large arrays, structures).
+
+Memory leaks occur if not freed properly.
+#include <stdio.h>
+#include <stdlib.h> // Required for malloc and free
+
+int main() {
+    int n = 5; // Size of the array
+    int *arr = (int *)malloc(n * sizeof(int)); // Allocate memory for 5 integers
+
+    if (arr == NULL) { // Always check if allocation succeeded
+        printf("Memory allocation failed!\n");
+        return 1; // Exit if malloc fails
+    }
+
+    // Initialize array values
+    for (int i = 0; i < n; i++) {
+        arr[i] = i * 10; // Assign values (0, 10, 20, 30, 40)
+    }
+
+    // Print the array
+    for (int i = 0; i < n; i++) {
+        printf("arr[%d] = %d\n", i, arr[i]);
+    }
+
+    free(arr); // Release the allocated memory
+    arr = NULL; // Good practice: Set pointer to NULL after freeing
+
+    return 0;
+}
